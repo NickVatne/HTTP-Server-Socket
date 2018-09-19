@@ -17,7 +17,7 @@ public class HttpRequest {
 	public HttpRequest execute() {
 		try(Socket socket = new Socket(host, port);
 		socket.getOutputStream();
-		return new HttpResponse();)
+		return new HttpResponse();
 	}
 	
 	public void writeRequest(OutputStream output) {
