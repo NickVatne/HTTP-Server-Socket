@@ -1,3 +1,5 @@
+import java.net.Socket;
+
 import org.omg.CORBA.portable.OutputStream;
 
 public class HttpRequest {
@@ -12,8 +14,16 @@ public class HttpRequest {
 		this.port = port;
 	}
 	
+	public HttpRequest execute() {
+		try(Socket socket = new Socket(host, port);
+		socket.getOutputStream();
+		return new HttpResponse();)
+	}
+	
 	public void writeRequest(OutputStream output) {
-		output.write(("GET " + path + "HTTP1.1\r\n").getBytes());
+		output.write(("GET " + path + "HTTP/1.1\r\n").getBytes());
+		output.write(("GET " + host + "\r\n").getBytes());
+		output.write("\r\n\r\n".getBytes());
 	}
 	
 }
