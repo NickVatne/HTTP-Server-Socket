@@ -1,7 +1,5 @@
 package no.kristiania.pgr200.http;
 
-import com.sun.xml.internal.bind.v2.TODO;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.Socket;
@@ -37,4 +35,4 @@ public class HttpResponse extends HttpRequest {
     }
 
 }
-}
+

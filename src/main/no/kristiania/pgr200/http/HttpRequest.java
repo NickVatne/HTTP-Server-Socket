@@ -7,17 +7,20 @@ import java.net.Socket;
 public class HttpRequest {
 	
 	private String path;
-	private String host;
-	private int port;
+	private int host;
+	private String port;
 	
-	public HttpRequest(String path, String host, int port){
+	public HttpRequest(String path, int host, String port){
 		this.path = path;
 		this.host = host;
 		this.port = port;
 	}
 
-	public HttpRequest execute() throws IOException {
-		try(Socket socket = new Socket(host, port)) {
+    public HttpRequest() {
+    }
+
+    public HttpRequest execute() throws IOException {
+		try(Socket socket = new Socket(port, host)) {
 			socket.getOutputStream()
 					.write(("GET " + path + " HTTP/1.1\r\n").getBytes());
 			socket.getOutputStream()

@@ -12,7 +12,7 @@ public class HttpTest {
 		HttpRequest request = new HttpRequest("urlecho.appspot.com", 80, "/echo?status=200");
 		HttpRequest response = request.execute();
 		
-		assertThat(response.getStatusCode()).isEqualTo(200);*/
+		assertThat(response.getStatusCode()).isEqualTo(200);
 		
 	}
 }
