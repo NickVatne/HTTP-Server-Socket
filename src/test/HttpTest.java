@@ -66,4 +66,5 @@ public class HttpTest {
     	assertThat(path.getQuery().getParameter("status")).isEqualTo("400");
     	assertThat(path.getQuery().getParameter("body")).isEqualTo("vi plukker blåbær");
     }
+
 }
