@@ -16,4 +16,26 @@ public class HttpTest {
 		assertThat(response.getStatusCode()).isEqualTo(200);
 		
 	}
+	@Test
+	public void shouldReadResponseCode() throws Exception{
+		HttpRequest request = new HttpRequest("urlecho.appspot.com", 80, "/echo");
+		HttpResponse response = request.execute();
+
+		assertThat(response.getStatusCode()).isEqualTo(200);
+	}
+	@Test
+	public void shouldReadBody() throws Exception{
+		HttpRequest request = new HttpRequest("urlecho.appspot.com", 80, "/echo?body=Hello+World!");
+		HttpResponse response = request.execute();
+
+		assertThat(response.getBody()).isEqualTo("Hello World!");
+	}
+	@Test
+	public void shouldReadResponseCodeTest() throws Exception{
+		HttpRequest request = new HttpRequest("urlecho.appspot.com", 80, "/echo?status=404");
+		HttpResponse response = request.execute();
+
+		assertThat(response.getStatusCode()).isEqualTo(404);
+
+	}
 }
