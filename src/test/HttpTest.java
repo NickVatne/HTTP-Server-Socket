@@ -57,4 +57,12 @@ public class HttpTest {
         assertThat(response.getStatusCode().isEqualTo(200));
         assertThat(response.getBody().isEqualTo("Hello World!");
     }
+	@Test
+	public void shouldParseUrl() {
+    	HttpPath path = new HttpPath("/myapp/echo?status=402&body=vi%20plukker%20bl%C3%A5b%C3%A6r");
+    	assertThat(path.getPath()).isEqualTo("/myapp/echo");
+    	assertThat(path.getPathParts()).containsExactly("myapp", "echo");
+    	assertThat(path.getQuery().getParameter("status")).isEqualTo("400");
+    	assertThat(path.getQuery().getParameter("body")).isEqualTo("vi plukker blåbær");
+    }
 }
