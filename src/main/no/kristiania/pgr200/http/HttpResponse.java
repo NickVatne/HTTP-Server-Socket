@@ -4,18 +4,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.Socket;
 import java.util.HashMap;
-import java.util.Map;
 
 public class HttpResponse {
 
     private int statusCode;
 
-    private Map<String, String> headers = new HashMap<>();
-
-    private InputStream input;
-
+    HashMap<String, String> headers;
     private String body;
-
+    private InputStream input;
     public String getBody() {
         return body;
     }
@@ -39,6 +35,7 @@ public class HttpResponse {
     }
 
     private int getContentLength() {
+
         return Integer.parseInt(getHeader("Content-Length"));
     }
 
@@ -79,10 +76,12 @@ public class HttpResponse {
     }
 
     public int getStatusCode() {
+
         return statusCode;
     }
 
     public String getHeader(String headerName) {
+
         return headers.get(headerName);
     }
 

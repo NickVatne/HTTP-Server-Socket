@@ -1,3 +1,4 @@
+import no.kristiania.pgr200.http.HttpPath;
 import no.kristiania.pgr200.http.HttpRequest;
 import no.kristiania.pgr200.http.HttpResponse;
 import no.kristiania.pgr200.http.HttpServer;
