@@ -40,7 +40,7 @@ public class HttpEchoServer {
                 String body = "Hello world";
 
                 output.write("HTTP/1.1 200 Ok\r\n".getBytes());
-                output.write("X-Server-Name: The Web Server\r\n".getBytes());
+                output.write("X-Server-Name: The Failed Server\r\n".getBytes());
                 output.write("Connection: close\r\n".getBytes());
                 output.write("Content-Type: text/plain\r\n".getBytes());
                 output.write(("Content-Length: " + body.length() + "\r\n").getBytes());
