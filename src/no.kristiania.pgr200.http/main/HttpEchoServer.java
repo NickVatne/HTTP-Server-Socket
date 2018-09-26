@@ -1,18 +1,20 @@
-package no.kristiania.pgr200.http;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class HttpServer {
+public class HttpEchoServer {
     private int port;
     private int actualPort;
 
-    public HttpServer(int port) throws IOException {
+    public HttpEchoServer(int port) throws IOException {
         this.port = port;
         start();
+    }
+    public int getPort() {
+
+        return actualPort;
     }
 
     public void start() throws IOException {
@@ -35,10 +37,10 @@ public class HttpServer {
                     line = readNextLine(input);
                 }
 
-                String body = "Hello world\r\n";
+                String body = "Hello world";
 
                 output.write("HTTP/1.1 200 Ok\r\n".getBytes());
-                output.write("X-Server-Name: Kristiania Web Server\r\n".getBytes());
+                output.write("X-Server-Name: The Web Server\r\n".getBytes());
                 output.write("Connection: close\r\n".getBytes());
                 output.write("Content-Type: text/plain\r\n".getBytes());
                 output.write(("Content-Length: " + body.length() + "\r\n").getBytes());
@@ -66,9 +68,5 @@ public class HttpServer {
         }
 
         return line.toString();
-    }
-
-    public int getPort() {
-        return actualPort;
     }
 }

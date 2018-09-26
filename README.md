@@ -1,6 +1,16 @@
 Innlevering #1: HTTP Server
 ===========================
 
+- Serveren kjøres gjennom main metoden i HttpMainClient til designert port,da kjøres en test request men det er også mulig å sende en egen request gjennom default: localhost:10080 på ønsket nettleser.
+
+
+Kommentar på resultat:
+--------------------
+- Mye gikk som ønsket, men grunnet kortere tid og middels kunnskap  rundt HTTP og dens funksjonalitet ble vi ikke helt ferdig med ting som HTTPPath og dens TestsKlasse. Sammen med dette ønsket vi også å gjøre noe refakotrering som ikke ble mulig innenfor satt tid.
+- Det var derimot en lærerik opplevelse som ga meg en god innføring i hvordan vi skal løse kommende problemstillinger innenfor HTTP
+
+
+
 Oppgaven:
 ---------
 
@@ -10,44 +20,20 @@ Serveren skal bruke parametre fra requesten og svare tilsvarende. Dere kan benyt
 
 HTTP er definert som en request/response protokoll. Det vil si at en klient (typisk en nettleser) oppretter en forbindelse til en server og sender en request. Serveren svarer med en response. Både requesten og responsen er tekst som sendes over nettverket. En typisk utveksling kan se slik ut (fra [RFC 7230](https://tools.ietf.org/html/rfc7230#section-2.1)):
 
-Client request:
 
-     GET /hello.txt HTTP/1.1
-     User-Agent: curl/7.16.3 libcurl/7.16.3 OpenSSL/0.9.7l zlib/1.2.3
-     Host: www.example.com
-     Accept-Language: en, mi
+Spørsmål videre:
+----------------
 
+- En forklaring av de konkrete forskjellene på de unike klassene.
+- Tips & Triks for hvordan du selv ville brutt ned en slik oppgave i håndterbare deler.
 
-Server response:
-
-     HTTP/1.1 200 OK
-     Date: Mon, 27 Jul 2009 12:28:53 GMT
-     Server: Apache
-     Last-Modified: Wed, 22 Jul 2009 19:15:56 GMT
-     ETag: "34aa387-d-1568eb00"
-     Accept-Ranges: bytes
-     Content-Length: 51
-     Vary: Accept-Encoding
-     Content-Type: text/plain
-
-     Hello World! My payload includes a trailing CRLF.  
-
-
-Innleveringen:
---------------
-
-Dere skal levere inn oppgaven i GitHub og jobbe parvis. Dersom du ønsker å være med å påvirke hvem du skal jobbe med, så kan du [fylle ut dette spørreskjema](https://goo.gl/forms/4wHR1X6a7ufjVJh82). Dere kan velge nye grupper til neste innlevering.
-
-I tillegg til koden i GitHub skal dere ta opp en video på 3-8 minutter der dere parprogrammerer litt kode. Screencast-o-matic anbefales som verktøy for video-opptaket, men andre verktøy kan benyttes. En lenke til videoen skal leveres – ikke videoen selv. Husk å åpne for tilgang til videoen («unlisted» i Youtube).
-
-
-Innholdet i oppgaven er definert i form at et sett med [GitHub issues](https://github.com/jhannes-playpen/innlevering-1-http/issues). Det er lurt å kopiere disse issues til deres eget kopi av prosjektet.
-
-
+Deltakere:
+---------
+@NickVatne & @s0lveig
 
 
 Vurderingskriterier:
---------------------
+-------------------
 
 * Koden må kompilerer og serveren må la seg starte.
 * README.md må beskrive hvordan man starter opp serveren

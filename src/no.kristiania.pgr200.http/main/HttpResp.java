@@ -1,52 +1,56 @@
-package no.kristiania.pgr200.http;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.Socket;
 import java.util.HashMap;
+import java.util.Map;
 
-public class HttpResponse {
+public class HttpResp {
 
     private int statusCode;
 
-    HashMap<String, String> headers;
-    private String body;
+    private Map<String, String> headers = new HashMap<>();
+
     private InputStream input;
+
+    private String body;
+
     public String getBody() {
         return body;
     }
 
-    public HttpResponse(Socket socket) throws IOException {
+    public HttpResp(Socket socket) throws IOException {
         input = socket.getInputStream();
 
-        readStatusLine();
-        readHeaderLines();
-        readBody();
+        readStatusLine();readHeaderLines();readBody();
     }
 
     private void readBody() throws IOException {
+
         int contentLength = getContentLength();
         StringBuilder body = new StringBuilder();
-        for (int i=0; i<contentLength; i++) {
+
+        for (int i = 0; i < contentLength; i++) {
             int c = input.read();
-            body.append((char)c);
+            body.append((char) c);
         }
+
         this.body = body.toString();
     }
 
-    private int getContentLength() {
 
+    private int getContentLength() {
         return Integer.parseInt(getHeader("Content-Length"));
     }
 
     private void readHeaderLines() throws IOException {
+
         String headerLine;
         while ((headerLine = readNextLine()) != null) {
             if (headerLine.isEmpty()) break;
 
             int colonPos = headerLine.indexOf(':');
             String headerName = headerLine.substring(0, colonPos);
-            String headerValue = headerLine.substring(colonPos+1).trim();
+            String headerValue = headerLine.substring(colonPos + 1).trim();
 
             headers.put(headerName, headerValue);
         }
@@ -70,7 +74,7 @@ public class HttpResponse {
                 }
                 break;
             }
-            currentLine.append((char)c);
+            currentLine.append((char) c);
         }
         return currentLine.toString();
     }
@@ -81,8 +85,18 @@ public class HttpResponse {
     }
 
     public String getHeader(String headerName) {
-
         return headers.get(headerName);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        result.append("Status: "+getStatusCode()+"\n");
+        for(Map.Entry<String, String> entry : headers.entrySet()){
+            result.append(entry.getKey()+": "+entry.getValue()+"\n");
+        }
+        result.append("\n\n"+getBody());
+        return result.toString();
     }
 
 }

@@ -1,5 +1,3 @@
-package no.kristiania.pgr200.http;
-
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
